@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "task": "Hang out",
+        "done": false
+    },
+    {
+        "task": "Work out",
+        "done": false
+    }
+]
