@@ -21,6 +21,6 @@
   
   header('Content-Type: application/json');
   
-  echo json_encode($todolist);
+  echo file_get_contents('../data/todo-list.json');
 
 ?>

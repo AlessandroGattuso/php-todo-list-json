@@ -16,7 +16,7 @@
       <div class="container d-flex justify-content-center align-items-center flex-column gap-3">
         <div class="card" style="width: 18rem;">
           <ul class="list-group list-group-flush">
-            <li v-for="(item , index) in todoList" class="list-group-item d-flex justify-content-between">
+            <li v-for="(item , index) in todoList" class="list-group-item d-flex justify-content-between align-items-center">
               <span class="cursor-pointer" @click="setDone(index)">{{ item.task }}</span>
               <div class="d-flex gap-2">
                 <button @click="setDone(index)" type="button" class="btn" :class="(item.done) ? 'btn-success' : 'btn-outline-success' "><i class="fa-solid fa-check"></i></button>

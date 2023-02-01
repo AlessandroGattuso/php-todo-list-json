@@ -1,10 +1,14 @@
 [
     {
-        "task": "Hang out",
+        "task": "Workout",
         "done": false
     },
     {
-        "task": "Work out",
+        "task": "Delete task",
+        "done": false
+    },
+    {
+        "task": "Create comp",
         "done": false
     }
 ]
