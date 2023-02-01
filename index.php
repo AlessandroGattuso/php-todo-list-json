@@ -18,8 +18,8 @@
           <ul class="list-group list-group-flush">
             <li v-for="(item , index) in todoList" class="list-group-item d-flex justify-content-between">
               <span>{{ item.task }}</span>
-              <div>
-                <button @click="setDone(item.task)" type="button" class="btn btn-success" :class="(item.done) ? "><i class="fa-solid fa-trash"></i></button>
+              <div class="d-flex gap-2">
+                <button type="button" class="btn" :class="(item.done) ? 'btn-success' : 'btn-outline-success' "><i class="fa-solid fa-check"></i></button>
                 <button @click="deleteTask(item.task)" type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
               </div>
             </li>
