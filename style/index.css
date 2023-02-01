@@ -7,3 +7,7 @@
 .bg-blue {
   background-color: rgb(15, 24, 69);
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}

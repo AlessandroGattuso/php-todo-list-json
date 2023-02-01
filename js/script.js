@@ -10,21 +10,31 @@ createApp({
   },
   methods: {
     addTask() {
-      const data = {
+      const params = {
         addTask: this.newTask,
       }
-      axios.post(this.pathGetData, data, {
+      axios.post(this.pathGetData, params, {
         headers: { 'Content-Type': 'multipart/form-data' }
       }).then((response) => {
         this.newTask = '';
         this.todoList = response.data;
       })
     },
+    setDone(task) {
+      const params = {
+        setDone: task,
+      }
+      axios.post(this.pathGetData, params, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      }).then((response) => {
+        this.todoList = response.data;
+      })
+    },
     deleteTask(task) {
-      const data = {
+      const params = {
         deleteTask: task,
       }
-      axios.post(this.pathGetData, data, {
+      axios.post(this.pathGetData, params, {
         headers: { 'Content-Type': 'multipart/form-data' }
       }).then((response) => {
         this.todoList = response.data;
