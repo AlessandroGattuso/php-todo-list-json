@@ -17,10 +17,10 @@
         <div class="card" style="width: 18rem;">
           <ul class="list-group list-group-flush">
             <li v-for="(item , index) in todoList" class="list-group-item d-flex justify-content-between">
-              <span class="cursor-pointer" @click="setDone(item.task)">{{ item.task }}</span>
+              <span class="cursor-pointer" @click="setDone(index)">{{ item.task }}</span>
               <div class="d-flex gap-2">
-                <button @click="setDone(item.task)" type="button" class="btn" :class="(item.done) ? 'btn-success' : 'btn-outline-success' "><i class="fa-solid fa-check"></i></button>
-                <button @click="deleteTask(item.task)" type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                <button @click="setDone(index)" type="button" class="btn" :class="(item.done) ? 'btn-success' : 'btn-outline-success' "><i class="fa-solid fa-check"></i></button>
+                <button @click="deleteTask(index)" type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
               </div>
             </li>
           </ul>

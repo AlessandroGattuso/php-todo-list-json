@@ -30,9 +30,9 @@ createApp({
         this.todoList = response.data;
       })
     },
-    deleteTask(task) {
+    deleteTask(nameTask) {
       const params = {
-        deleteTask: task,
+        deleteTask: nameTask,
       }
       axios.post(this.pathGetData, params, {
         headers: { 'Content-Type': 'multipart/form-data' }
