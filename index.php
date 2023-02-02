@@ -14,18 +14,20 @@
     <div class="container-fluid bg-blue vh-100">
       <h1 class="text-center text-white py-5">Todo list</h1>
       <div class="container d-flex justify-content-center align-items-center flex-column gap-3">
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 25rem;">
           <ul class="list-group list-group-flush">
             <li v-for="(item , index) in todoList" class="list-group-item d-flex justify-content-between align-items-center">
-              <span class="cursor-pointer" @click="setDone(index)">{{ item.task }}</span>
-              <div class="d-flex gap-2">
+              <input v-if="item.edit" @keyup.enter="setEdit(index)" type="text" class="form-control w-50" id="exampleFormControlInput1" v-model="item.editString">
+              <span v-else class="cursor-pointer" @click="setDone(index)">{{ item.task }}</span>
+              <div class="d-flex gap-2"> 
+                <button @click="setEdit(index)" type="button" class="btn" :class="(item.edit) ? 'btn-warning' : 'btn-outline-warning'"><i class="fa-regular fa-pen-to-square"></i></button>
                 <button @click="setDone(index)" type="button" class="btn" :class="(item.done) ? 'btn-success' : 'btn-outline-success' "><i class="fa-solid fa-check"></i></button>
                 <button @click="deleteTask(index)" type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-              </div>
+              </div>     
             </li>
           </ul>
         </div>
-        <div class="input-group mb-3" style="width: 18rem;">
+        <div class="input-group mb-3" style="width: 25rem;">
           <input v-model="newTask" type="text" class="form-control" placeholder="Add new task" aria-label="Recipient's username" aria-describedby="button-addon2">
           <button @click="addTask" class="btn btn-outline-warning" type="button" id="button-addon2">Send</button>
         </div>

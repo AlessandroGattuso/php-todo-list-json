@@ -11,14 +11,44 @@ createApp({
   methods: {
     addTask() {
       const params = {
-        addTask: this.newTask,
+        addTask: this.newTask.trim(),
       }
       axios.post(this.pathGetData, params, {
         headers: { 'Content-Type': 'multipart/form-data' }
       }).then((response) => {
         this.newTask = '';
-        this.todoList = response.data;
+        this.todoList = [];
+        response.data.forEach(element => {
+          this.todoList.push({
+            "task": element.task,
+            "done": element.done,
+            "edit": false,
+            "editString": element.task
+          });
+        });
       })
+    },
+    setEdit(index) {
+      this.todoList[index].edit = !this.todoList[index].edit;
+      if (this.todoList[index].task != this.todoList[index].editString.trim()) {
+        const params = {
+          editTask: index,
+          editString: this.todoList[index].editString
+        }
+        axios.post(this.pathGetData, params, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        }).then((response) => {
+          this.todoList = [];
+          response.data.forEach(element => {
+            this.todoList.push({
+              "task": element.task,
+              "done": element.done,
+              "edit": false,
+              "editString": element.task
+            });
+          });
+        })
+      }
     },
     setDone(index) {
       const params = {
@@ -27,7 +57,15 @@ createApp({
       axios.post(this.pathGetData, params, {
         headers: { 'Content-Type': 'multipart/form-data' }
       }).then((response) => {
-        this.todoList = response.data;
+        this.todoList = [];
+        response.data.forEach(element => {
+          this.todoList.push({
+            "task": element.task,
+            "done": element.done,
+            "edit": false,
+            "editString": element.task
+          });
+        });
       })
     },
     deleteTask(index) {
@@ -37,13 +75,28 @@ createApp({
       axios.post(this.pathGetData, params, {
         headers: { 'Content-Type': 'multipart/form-data' }
       }).then((response) => {
-        this.todoList = response.data;
+        this.todoList = [];
+        response.data.forEach(element => {
+          this.todoList.push({
+            "task": element.task,
+            "done": element.done,
+            "edit": false,
+            "editString": element.task
+          });
+        });
       })
     }
   },
   mounted() {
     axios.get(this.pathGetData).then((response) => {
-      this.todoList = response.data;
+      response.data.forEach(element => {
+        this.todoList.push({
+          "task": element.task,
+          "done": element.done,
+          "edit": false,
+          "editString": element.task
+        })
+      });
     });
   }
 }).mount('#app');
