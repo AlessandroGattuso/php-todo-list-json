@@ -20,9 +20,9 @@ createApp({
         this.todoList = response.data;
       })
     },
-    setDone(task) {
+    setDone(index) {
       const params = {
-        setDone: task,
+        setDone: index,
       }
       axios.post(this.pathGetData, params, {
         headers: { 'Content-Type': 'multipart/form-data' }
@@ -30,9 +30,9 @@ createApp({
         this.todoList = response.data;
       })
     },
-    deleteTask(nameTask) {
+    deleteTask(index) {
       const params = {
-        deleteTask: nameTask,
+        deleteTask: index,
       }
       axios.post(this.pathGetData, params, {
         headers: { 'Content-Type': 'multipart/form-data' }

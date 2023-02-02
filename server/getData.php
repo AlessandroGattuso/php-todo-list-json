@@ -12,7 +12,6 @@
   if(isset($_POST['deleteTask']))
     unset($todolist[$_POST['deleteTask']]);
   
-
   if(isset($_POST['setDone']))
     $todolist[$_POST['setDone']]['done'] = !$todolist[$_POST['setDone']]['done'];
   
